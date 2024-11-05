@@ -7,8 +7,16 @@ from .models import College, Program, Organization, Student, OrgMember
 from .models import College, Program, Organization, Student, OrgMember
 
 admin.site.register(College)
-admin.site.register(Program)
-admin.site.register(Organization)
+@admin.register(Program)
+class ProgramAdmin(admin.ModelAdmin):
+    list_display = ("prog_name", "college")
+    search_fields = ("prog_name", "college__college_name")
+
+@admin.register(Organization)
+class OrganizationAdmin(admin.ModelAdmin):
+    list_display = ("name","college")
+    search_fields = ("name", "college__college_name",)
+
 # 4
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -19,10 +27,10 @@ class StudentAdmin(admin.ModelAdmin):
 # 5
 @admin.register(OrgMember)
 class OrgMemberAdmin(admin.ModelAdmin):
-    list_display = ("student", "get_member_program", "organization", "date_joined",)
+    list_display = ("student", "member_program", "organization", "date_joined",)
     search_fields = ("student__lastname", "student__firstname",)
 
-    def get_member_program(self, obj):
+    def member_program(self, obj):
         try:
             member = Student.objects.get(id=obj.student_id)
             return member.program

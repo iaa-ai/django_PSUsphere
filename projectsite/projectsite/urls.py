@@ -44,6 +44,6 @@ urlpatterns = [
     path('college_list/<pk>', CollegeUpdateView.as_view(), name='college-update'),
     path('college_list/<pk>/delete', CollegeDeleteView.as_view(), name='college-delete'),
     re_path(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'), 
-    re_path(r'^logout/$', auth_views.LogoutView.as_view(template_name='login.html'), name='logout'), 
+    re_path(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'), 
     
 ]

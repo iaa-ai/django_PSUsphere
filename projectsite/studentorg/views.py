@@ -22,7 +22,7 @@ class OrganizationList(ListView):
     model = Organization
     context_object_name = 'organization'
     template_name = 'org_list.html'
-    paginated_by = 5
+    paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
         qs = super(OrganizationList, self).get_queryset(*args, **kwargs)
@@ -53,7 +53,7 @@ class StudentList(ListView):
     model = Student
     context_object_name = 'student'
     template_name = 'stud_list.html'
-    paginated_by = 5
+    paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
         qs = super(StudentList, self).get_queryset(*args, **kwargs)
@@ -85,7 +85,7 @@ class OrgMemberList(ListView):
     model = OrgMember
     context_object_name = 'orgmember'
     template_name = 'orgm_list.html'
-    paginated_by = 5
+    paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
         qs = super(OrgMemberList, self).get_queryset(*args, **kwargs)
@@ -117,7 +117,7 @@ class ProgramList(ListView):
     model = Program
     context_object_name = 'program'
     template_name = 'pro_list.html'
-    paginated_by = 5
+    paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
         qs = super(ProgramList, self).get_queryset(*args, **kwargs)
@@ -149,7 +149,7 @@ class CollegeList(ListView):
     model = College
     context_object_name = 'college'
     template_name = 'col_list.html'
-    paginated_by = 5
+    paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
         qs = super(CollegeList, self).get_queryset(*args, **kwargs)

@@ -182,38 +182,38 @@
 							</div>
 						</div>
 						<ul class="nav">
-							<li class="nav-item active">
-								<a href="{% url 'home' %}">
+							<li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+								<a class="nav-link" href="{% url 'home' %}">
 									<i class="la la-dashboard"></i>
 									<p>Dashboard</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{% url 'organization-list' %}">
+							<li class="nav-item {% if request.resolver_match.url_name == 'organization-list' %}active{% endif %}">
+								<a class="nav-link" href="{% url 'organization-list' %}">
 									<i class="la la-building"></i>
 									<p>Organization</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{% url 'orgmember-list' %}">
+							<li class="nav-item {% if request.resolver_match.url_name == 'orgmember-list' %}active{% endif %}">
+								<a class="nav-link" href="{% url 'orgmember-list' %}">
 									<i class="la la-group"></i>
 									<p>Org. Members</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{% url 'student-list' %}">
+							<li class="nav-item {% if request.resolver_match.url_name == 'student-list' %}active{% endif %}">
+								<a class="nav-link" href="{% url 'student-list' %}">
 									<i class="la la-black-tie"></i>
 									<p>Student</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{% url 'college-list' %}">
+							<li class="nav-item {% if request.resolver_match.url_name == 'college-list' %}active{% endif %}">
+								<a class="nav-link" href="{% url 'college-list' %}">
 									<i class="la la-bank"></i>
 									<p>College</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{% url 'program-list' %}">
+							<li class="nav-item {% if request.resolver_match.url_name == 'program-list' %}active{% endif %}">
+								<a class="nav-link" href="{% url 'program-list' %}">
 									<i class="la la-tasks"></i>
 									<p>Program</p>
 								</a>

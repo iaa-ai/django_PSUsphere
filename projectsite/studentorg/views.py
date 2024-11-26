@@ -16,7 +16,15 @@ from django.contrib.auth.decorators import login_required
 class HomePageView(ListView):
     model = Organization
     context_object_name = 'home'
-    template_name = 'home.html'
+    template_name = "home.html"
+    paginate_by = 5
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") != None:
+            query = self.request.GET.get('q')
+            qs = qs.filter(Q(name__icontains=query) |
+                           Q(description__icontains=query))
+        return qs
 
 class OrganizationList(ListView):
     model = Organization
@@ -25,11 +33,14 @@ class OrganizationList(ListView):
     paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
-        qs = super(OrganizationList, self).get_queryset(*args, **kwargs)
-        if self.request.GET.get("q") != None:
-            query = self.request.GET.get("q")
-            qs = qs.filter(Q(name__icontains=query)|Q(description__icontains=query))
+        qs = super(OrganizationList, self).get_queryset(*args, **kwargs) 
+        if self.request.GET.get('q') != None:
+            query = self.request.GET.get('q')
+            qs = qs.filter(
+                Q(name__icontains=query) | Q(description__icontains=query)
+            )
         return qs
+
 
 class OrganizationCreateView(CreateView):
     model = Organization
